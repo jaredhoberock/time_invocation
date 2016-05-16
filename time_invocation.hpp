@@ -21,6 +21,12 @@ Duration time_invocation_in(const Clock& clock, std::size_t num_trials, Function
 }
 
 template<class Function, class... Args>
+std::size_t time_invocation_in_nanoseconds(std::size_t num_trials, Function&& f, Args&&... args)
+{
+  return ::time_invocation_in<std::chrono::nanoseconds>(std::chrono::high_resolution_clock(), num_trials, std::forward<Function>(f), std::forward<Args>(args)...).count();
+}
+
+template<class Function, class... Args>
 std::size_t time_invocation_in_microseconds(std::size_t num_trials, Function&& f, Args&&... args)
 {
   return ::time_invocation_in<std::chrono::microseconds>(std::chrono::high_resolution_clock(), num_trials, std::forward<Function>(f), std::forward<Args>(args)...).count();

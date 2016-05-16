@@ -28,6 +28,9 @@ template<class Duration, class Clock, class Function, class... Args>
 Duration time_invocation_in(const Clock& clock, std::size_t num_trials, Function&& f, Args&&... args);
 
 template<class Function, class... Args>
+std::size_t time_invocation_in_nanoseconds(std::size_t num_trials, Function&& f, Args&&... args);
+
+template<class Function, class... Args>
 std::size_t time_invocation_in_microseconds(std::size_t num_trials, Function&& f, Args&&... args);
 
 template<class Function, class... Args>
